@@ -11,7 +11,7 @@ public class TodoItem {
     private boolean done;
     private int priority;
 
-    public TodoItem{
+    public TodoItem(){
         this.name="";
         this.done = false;
         this.priority = 1;
@@ -48,7 +48,7 @@ public class TodoItem {
         this.priority = priority;
     }
 
-    @override
+    @Override
     public String toString(){
         return "[name: "+ name + ", done:" + done + ", priority:" + priority +"]";
     }
