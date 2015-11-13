@@ -19,6 +19,8 @@ import android.view.MenuItem;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -63,11 +65,11 @@ public class MainActivity extends AppCompatActivity
 
          */
 
-        object objectTodoList = new Object();
+        Object objectTodoList = new Object();
 
-        Type arrayTodoList = new TypeToken<TodoArrayList>.getType();
+        Type arrayTodoList = new TypeToken<TodoArrayList>() {}.getType();
 
-        gson.fromJson(todo_list.arrayTodoList());
+        gson.fromJson(todo_list, arrayTodoList);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
