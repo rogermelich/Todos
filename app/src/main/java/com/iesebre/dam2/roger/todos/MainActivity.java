@@ -2,6 +2,7 @@ package com.iesebre.dam2.roger.todos;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.session.MediaSession;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,6 +41,33 @@ public class MainActivity extends AppCompatActivity
         String todo_list = todos.getString(TODO_LIST, null);
 
         gson = new Gson();
+
+
+        /*
+        Exemple possible sintaxi:
+
+        [
+         {name;'Comprar Llet', done: true, priority: 2 },
+         {name;'Comprar Pa, done: false, priority: 1},
+         {name;'Fer Exercicis, done: true, priority: 3}
+         {}
+
+
+
+
+
+
+        ]
+
+
+
+         */
+
+        object objectTodoList = new Object();
+
+        Type arrayTodoList = new TypeToken<TodoArrayList>.getType();
+
+        gson.fromJson(todo_list.arrayTodoList());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
