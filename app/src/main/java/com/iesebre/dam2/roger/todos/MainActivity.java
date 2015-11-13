@@ -27,7 +27,10 @@ public class MainActivity extends AppCompatActivity
 
     private static final String SHARED_PREFERENCES_TODOS = "SP_TODOS";
     private static final String TODO_LIST = "todo_list";
+
     private Gson gson;
+
+    public TodoItem tasks;
 
     @Override
     protected void onDestroy() {
@@ -42,6 +45,17 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences todos = getSharedPreferences(SHARED_PREFERENCES_TODOS, 0);
         String todo_list = todos.getString(TODO_LIST, null);
 
+        if (todo_list == null){
+            String initial_json = "[{\"name\":\"Comprar Llet\", \"done\": true, \"priority\": 2 },\n" +
+                    "         {\"name\":\"Comprar Pa\", \"done\": false, \"priority\": 1},\n" +
+                    "         {\"name\":\"Fer Exercicis\", \"done\": true, \"priority\": 3}]";
+            SharedPreferences.Editor editor = todos.edit();
+            editor.putString(SHARED_PREFERENCES_TODOS, initial_json);
+            editor.commit();
+            todo_list = todos.getString(TODO_LIST, null);
+        }
+
+
         gson = new Gson();
 
 
@@ -49,15 +63,10 @@ public class MainActivity extends AppCompatActivity
         Exemple possible sintaxi:
 
         [
-         {name;'Comprar Llet', done: true, priority: 2 },
-         {name;'Comprar Pa, done: false, priority: 1},
-         {name;'Fer Exercicis, done: true, priority: 3}
+         {"name";"Comprar Llet", "done": true, "priority": 2 },
+         {"name";"Comprar Pa", "done": false, "priority": 1},
+         {"name";"Fer Exercicis", "done": true, "priority": 3}
          {}
-
-
-
-
-
 
         ]
 
@@ -65,12 +74,16 @@ public class MainActivity extends AppCompatActivity
 
          */
 
-        Object objectTodoList = new Object();
+        //Object objectTodoList = new Object();
 
         Type arrayTodoList = new TypeToken<TodoArrayList>() {}.getType();
+        TodoItem temp = gson.fromJson(todo_list, arrayTodoList);
 
-        gson.fromJson(todo_list, arrayTodoList);
-
+        if (temp != null){
+            tasks = temp;
+        }else {
+            //Error 500
+        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
