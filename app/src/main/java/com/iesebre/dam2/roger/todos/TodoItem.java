@@ -1,5 +1,7 @@
 package com.iesebre.dam2.roger.todos;
 
+import com.google.gson.Gson;
+
 /**
  * Created by roger on 13/11/15.
  */
@@ -8,6 +10,19 @@ public class TodoItem {
     private String name;
     private boolean done;
     private int priority;
+
+    public TodoItem{
+        this.name="";
+        this.done = false;
+        this.priority = 1;
+
+    }
+
+    public TodoItem(String name, boolean done, int priority) {
+        this.name = name;
+        this.done = done;
+        this.priority = priority;
+    }
 
     public String getName() {
         return name;
@@ -31,5 +46,16 @@ public class TodoItem {
 
     public void setPriority(int priority) {
         this.priority = priority;
+    }
+
+    @override
+    public String toString(){
+        return "[name: "+ name + ", done:" + done + ", priority:" + priority +"]";
+    }
+
+    public String serializable(){
+        Gson gson = new Gson();
+        return gson.toJson(this);
+
     }
 }
