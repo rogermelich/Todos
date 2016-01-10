@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/addTaskDialog"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <EditText
+        android:id="@+id/task_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:inputType="textCapSentences"
+        android:maxLines="1"
+        android:hint="Nom Tasca" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="5dp"
+        android:text="Prioritat"
+        />
+    <RadioButton
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/task_priority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/task_priority_urgent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Urgent"
+            />
+
+        <RadioButton
+            android:id="@+id/task_priority_important"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Important"
+            />
+
+        <RadioButton
+            android:id="@+id/task_priority_not_urgent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Urgent"
+            />
+    </RadioButton>
+
+</RelativeLayout>

@@ -17,9 +17,32 @@
 
     <include layout="@layout/content_main" />
 
-    <android.support.design.widget.FloatingActionButton android:id="@+id/fab"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end" android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_add_white_36dp"
+        android:onClick="showAddTaskForms"
+        />
 
+    <Space
+        android:id="@+id/space"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        app:layout_anchor="@id/fab"
+        android:layout_gravity="top|end"
+        app:layout_anchorGravity="top"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabeliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:src="@drawable/ic_remove_white_36dp"
+        app:layout_anchor="@id/space"
+        app:layout_anchorGravity="top"
+        android:onClick="removeTask"
+        />
 </android.support.design.widget.CoordinatorLayout>
