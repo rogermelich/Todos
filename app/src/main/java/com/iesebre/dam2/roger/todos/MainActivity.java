@@ -182,7 +182,6 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -214,7 +213,7 @@ public class MainActivity extends AppCompatActivity
         final EditText taskNameText;
 
         MaterialDialog dialog = new MaterialDialog.Builder(this).
-                title("Afgir Tasca").
+                title("Afegir Tasca").
                 customView(R.layout.form_add_task, true).
                 negativeText("Cancelar").
                 positiveText("Afegir").
