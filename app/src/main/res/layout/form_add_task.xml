@@ -33,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Urgent"
+            android:buttonTint="#ff0000"
             />
 
         <RadioButton
@@ -40,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Important"
+            android:buttonTint="#ff8000"
             />
 
         <RadioButton
@@ -47,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No Urgent"
+            android:buttonTint="#00ff00"
             />
     </RadioGroup>
 

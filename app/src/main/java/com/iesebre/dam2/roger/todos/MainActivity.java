@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity
         ListView todoslv =
                 (ListView) findViewById(R.id.todolistview);
 
-        //We bind our arraylist of tasks to the adapter
+        //Lligem en arrayList per adaptador
         adapter = new CustomListAdapter(this, tasks);
         todoslv.setAdapter(adapter);
 
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-
+        //Afegim els botons flotants de Afegir i Eliminar
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         FloatingActionButton fabeliminar = (FloatingActionButton) findViewById(R.id.fabeliminar);
 //        fab.setOnClickListener(new View.OnClickListener()   {
@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity
                 customView(R.layout.form_add_task, true).
                 negativeText("Cancelar").
                 positiveText("Afegir").
-                negativeColor(Color.parseColor("#2196F3")).
+                negativeColor(Color.parseColor("#8a0808")).
                 positiveColor(Color.parseColor("#2196F3")).
                 onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
@@ -226,6 +226,7 @@ public class MainActivity extends AppCompatActivity
                         todoItem.setName(taskName);
                         todoItem.setDone(false);
 
+                        //Prioritat de la Tasca
                         RadioGroup taskPriority = (RadioGroup) dialog.findViewById(R.id.task_priority);
                         switch (taskPriority.getCheckedRadioButtonId()) {
                             case R.id.task_priority_urgent:
@@ -272,7 +273,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
-
+    // em una operació per a comprovar si i està activada i on està a quin lloc està aquesta línia i li fem un remove per tal de eleminar la línia
     public void removeTask(View view) {
         for (int i = tasks.size() - 1; i >= 0; i--) {
             if (tasks.get(i).isDone()) {
@@ -291,9 +292,11 @@ public class MainActivity extends AppCompatActivity
                 customView(R.layout.form_add_task, true).
                 negativeText("Cancelar").
                 positiveText("Actualitzar").
-                negativeColor(Color.parseColor("#2196F3")).
+                negativeColor(Color.parseColor("#8a0808")).
                 positiveColor(Color.parseColor("#2196F3")).
                 onPositive(new MaterialDialog.SingleButtonCallback() {
+                    //Amb aquest Override indiquem que si es prem on hi hes el que es vol canviar sobre un altra vegada el recuadre de
+                    //Afegir, però en aquest cas Editar.
                     @Override
                     public void onClick(MaterialDialog dialog, DialogAction which) {
                         tasks.get(position).setName(taskName);
@@ -303,8 +306,8 @@ public class MainActivity extends AppCompatActivity
                             tasks.get(position).setDone(false);
                         }
 
+                        //Prioritat de la Tasca
                         RadioGroup taskPriority = (RadioGroup) dialog.findViewById(R.id.task_priority);
-
                         switch (taskPriority.getCheckedRadioButtonId()) {
                             case R.id.task_priority_urgent:
                                 tasks.get(position).setPriority(1);
@@ -329,7 +332,7 @@ public class MainActivity extends AppCompatActivity
         positiveAction = dialog.getActionButton(DialogAction.POSITIVE);
         positiveAction.setEnabled(false);
 
-        //If we name a task and it has a priority, enable positive button
+        //Comprovem que hi hagui nom i prioritat i activi "PositiveAction"
         taskNameText.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -347,7 +350,7 @@ public class MainActivity extends AppCompatActivity
 
                 }
             });
-
+            //Asignem la posició, prioritat a cada Cercle de Color
             checkPrioritygroup = (RadioGroup) dialog.getCustomView().findViewById(R.id.task_priority);
             if (tasks.get(position).getPriority() == 1){checkPrioritygroup.check(R.id.task_priority_urgent);}
             if (tasks.get(position).getPriority() == 2){checkPrioritygroup.check(R.id.task_priority_important);}

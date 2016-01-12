@@ -60,18 +60,18 @@ public class CustomListAdapter extends BaseAdapter {
 
         done.setChecked(list.get(position).isDone());
 
-        int urgentColor = Color.parseColor("#fe0000");
-        int mediumColor = Color.parseColor("#0099ff");
-        int notUrgentColor = Color.parseColor("#00ff19");
+        int urgentColor = Color.parseColor("#ff0000");
+        int importantColor = Color.parseColor("#ff8000");
+        int notUrgentColor = Color.parseColor("#00ff00");
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            if(list.get(position).getPriority() == 1) {done.setButtonTintList(ColorStateList.valueOf(urgentColor));}
-            if(list.get(position).getPriority() == 2){done.setButtonTintList(ColorStateList.valueOf(mediumColor));}
+            if(list.get(position).getPriority() == 1){done.setButtonTintList(ColorStateList.valueOf(urgentColor));}
+            if(list.get(position).getPriority() == 2){done.setButtonTintList(ColorStateList.valueOf(importantColor));}
             if(list.get(position).getPriority() == 3){done.setButtonTintList(ColorStateList.valueOf(notUrgentColor));}
         } else {
             if(list.get(position).getPriority() == 1){done.setBackgroundColor(urgentColor);}
-            if(list.get(position).getPriority() == 2){done.setBackgroundColor(mediumColor);}
+            if(list.get(position).getPriority() == 2){done.setBackgroundColor(importantColor);}
             if(list.get(position).getPriority() == 3){done.setBackgroundColor(notUrgentColor);}
         }
 
